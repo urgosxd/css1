@@ -15,7 +15,7 @@ import { useStaticQuery, graphql } from "gatsby"
 export default () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
-      markdownRemark(id: { eq: "3901a08e-1418-5493-854f-9691e74bdbb6" }) {
+      markdownRemark(frontmatter: { path: { eq: "/hola" } }) {
         id
         frontmatter {
           content {

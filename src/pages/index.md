@@ -1,4 +1,5 @@
 ---
+path: /hola
 title: Practica de css nro 1
 content:
   baner:
