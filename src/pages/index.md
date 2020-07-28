@@ -50,4 +50,12 @@ content:
           lorem asdfdasf das fdas asdsd sdf asd asd fdas dasfdas
           lorem asdfdasf das fdas asdsd sdf asd asd fdas dasfdas
         h3: Someone Famous
+  contact:
+    h2: Contact us
+    p: lorem asdfdasf das fdas asdsd sdf asd asd fdas dasfdas
+      lorem asdfdasf das fdas asdsd sdf asd asd fdas dasfdas
+    img: /images/bg2.jpg
+    img2: /images/red.jpg
+  footer:
+    p: Design and develoop by Josho
 ---

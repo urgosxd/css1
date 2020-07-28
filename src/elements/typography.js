@@ -5,7 +5,7 @@ export const P = styled.p`
     switch (props.size) {
       case "small":
         return `@media only screen and ${props.theme.devices.phone}{
-                    font-size: 21px;
+                    font-size: 19px;
                 }
                 @media only screen and ${props.theme.devices.tablet}{
                     font-size: 20px;

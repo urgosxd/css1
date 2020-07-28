@@ -13,4 +13,16 @@ export const LayoutWrapper = styled.div`
     font-weight: 300;
     letter-spacing: 1px;
   }
+
+  @media ${props => props.theme.devices.tablet} {
+    .heading {
+      font-size: 45px;
+    }
+  }
+
+  @media ${props => props.theme.devices.phone} {
+    .heading {
+      font-size: 38px;
+    }
+  }
 `

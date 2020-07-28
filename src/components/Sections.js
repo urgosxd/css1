@@ -2,7 +2,18 @@ import React from "react"
 import PropTypes from "prop-types"
 import Img from "gatsby-image"
 import { Container, Row, Col } from "react-bootstrap"
-import { BannerWrapper, P, AboutWrapper, ServicesWrapper } from "../elements"
+import {
+  BannerWrapper,
+  P,
+  AboutWrapper,
+  ServicesWrapper,
+  TecnologyWrapper,
+  ClientWrapper,
+  TestimonialsWrapper,
+  ContactWrapper,
+  FooterWrapper,
+} from "../elements"
+import { Instagram, Twitter, Linkedin } from "@styled-icons/boxicons-logos"
 
 export const Banner = ({ data }) => {
   const image = data.img.childImageSharp.fluid
@@ -24,13 +35,13 @@ export const About = ({ data }) => {
     <AboutWrapper>
       <Container className="position-relative p-0" fluid={true}>
         <Row noGutters={true}>
-          <Col className="contentBx" lg={6}>
+          <Col className="contentBx" sm={12} md={12} lg={6}>
             <h2 className="heading">{data.h2}</h2>
-            <p size="small" className="text">
+            <P size="small" className="text">
               {data.p}
-            </p>
+            </P>
           </Col>
-          <Col lg={6}>
+          <Col xs={12} md={12} lg={6}>
             <Img fluid={image} />
           </Col>
         </Row>
@@ -48,10 +59,10 @@ export const Services = ({ data }) => {
       <P size="small" className="text">
         {data.p}
       </P>
-      <Container className="">
+      <Container className="contentBx">
         <Row>
           {data.box.map(e => (
-            <Col lg={4} className="serviceBx ">
+            <Col lg={4} md={6} xs={12} className="serviceBx ">
               <div className="min">
                 <Img fixed={e.img.childImageSharp.fixed} />
                 <h2>{e.h2}</h2>
@@ -65,13 +76,143 @@ export const Services = ({ data }) => {
 }
 
 export const Tecnology = ({ data }) => {
-  return <div>asd</div>
+  return (
+    <TecnologyWrapper>
+      <Container>
+        <Row>
+          <Col xs={12} md={12} lg={6}>
+            <div>
+              <h2 className="heading ">{data.h2}</h2>
+              <P size="small" className="text mt-4">
+                {data.p}
+              </P>
+            </div>
+          </Col>
+          <Col xs={12} md={12} lg={6} className="imgCol">
+            <Img fluid={data.img.childImageSharp.fluid} className="imgBox" />
+          </Col>
+        </Row>
+      </Container>
+    </TecnologyWrapper>
+  )
 }
 
 export const Client = ({ data }) => {
-  return <div>asd</div>
+  console.log(data)
+  return (
+    <ClientWrapper>
+      <h2 className="heading">{data.h2}</h2>
+      <P size="small" className="text pb-5">
+        {data.p}
+      </P>
+      <Container>
+        <Row className="mt-5">
+          {data.box.map(e => (
+            <Col xs={12} md={6} lg={3}>
+              <Img fixed={e.img.childImageSharp.fixed} className="imgBox" />
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </ClientWrapper>
+  )
 }
 
 export const Testimonials = ({ data }) => {
-  return <div>asd</div>
+  return (
+    <TestimonialsWrapper>
+      <h2 className="heading">{data.h2}</h2>
+      <Container>
+        <Row className="mt-5">
+          {data.box.map(e => (
+            <Col lg={6}>
+              <div className="contentBx d-flex justify-content-center align-items-center  flex-column text-left">
+                <P size="small">{e.p}</P>
+                <br />
+                <h3 className="w-100">{e.h3}</h3>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </TestimonialsWrapper>
+  )
+}
+
+export const Contact = ({ data }) => {
+  console.log(data)
+  const image = data.img.childImageSharp.fluid
+  const image2 = data.img2.childImageSharp.fluid.src
+  return (
+    <ContactWrapper>
+      <div className="contact">
+        <h2 className="heading">{data.h2}</h2>
+        <P size="small" className="text">
+          {data.p}
+        </P>
+      </div>
+      <Container className="h-75 p-0" fluid={true}>
+        <Row noGutters={true}>
+          <Col
+            className="contentBx"
+            xs={12}
+            md={12}
+            lg={6}
+            style={{ background: `url(${image2})` }}
+          >
+            <div className="formulario">
+              <div className="inputBx">
+                <input type="text" placeholder="Full Name" />
+              </div>
+              <div className="inputBx">
+                <input type="text" placeholder="Email Adress" />
+              </div>
+              <div className="inputBx">
+                <input type="text" placeholder="Mobile nro" />
+              </div>
+              <div className="inputBx">
+                <textarea placeholder="Write your Message" />
+              </div>
+              <div className="inputBx">
+                <input type="submit" value="send" />
+              </div>
+            </div>
+          </Col>
+          <Col xs={12} md={12} lg={6}>
+            <Img fluid={image} />
+          </Col>
+        </Row>
+      </Container>
+    </ContactWrapper>
+  )
+}
+
+export const Footer = ({ data }) => {
+  return (
+    <FooterWrapper>
+      <P size="small" className="text">
+        {data.p}
+      </P>
+      <ul>
+        <P size="small" className="text">
+          Follow us on:
+        </P>
+        <li>
+          <a href="#">
+            <Instagram size="25" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <Twitter size="25" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <Linkedin size="25" />
+          </a>
+        </li>
+      </ul>
+    </FooterWrapper>
+  )
 }

@@ -2,29 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { LayoutWrapper, NavWrapper, P } from "../elements"
+import { Menu } from "@styled-icons/entypo"
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap"
 
 export const Layout = ({ data, children, isHome }) => {
-  const dataQ = useStaticQuery(graphql`
-    query Hola {
-      allFile(filter: { relativePath: { eq: "toggle.png" } }) {
-        edges {
-          node {
-            id
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-  console.log(dataQ)
-
-  const Hamburger = dataQ.allFile.edges[0].node.childImageSharp.fluid.src
-
   return (
     <LayoutWrapper>
       <NavWrapper>
@@ -34,13 +15,13 @@ export const Layout = ({ data, children, isHome }) => {
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             style={{
-              background: `url(${Hamburger})`,
+              background: `url(${Menu})`,
             }}
             className="togle"
           />
           <Navbar.Collapse
             id="basic-navbar-nav"
-            className="justify-content-end mr-2"
+            className="justify-content-end mr-2 nadaque"
           >
             <Nav className="navitems ">
               <Nav.Link href="#home">Home</Nav.Link>

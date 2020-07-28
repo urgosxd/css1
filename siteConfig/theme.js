@@ -2,8 +2,8 @@ export default {
   fonts: {},
   colors: {},
   devices: {
-    phone: "(max-width: 544px)",
-    tablet: "(min-width: 544px)",
-    desktop: "(min-width: 992px)",
+    phone: "(max-width: 768px)",
+    tablet: "(max-width: 991px)",
+    desktop: "(min-width: 991px )",
   },
 }

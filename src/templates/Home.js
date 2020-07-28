@@ -7,13 +7,15 @@ import {
   Tecnology,
   Client,
   Testimonials,
+  Contact,
+  Footer,
 } from "../components"
 import { useStaticQuery, graphql } from "gatsby"
 
 export default () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
-      markdownRemark(id: { eq: "34fb13db-f4ba-5ac2-9c9b-23acf9359806" }) {
+      markdownRemark(id: { eq: "3901a08e-1418-5493-854f-9691e74bdbb6" }) {
         id
         frontmatter {
           content {
@@ -84,6 +86,27 @@ export default () => {
                 h3
               }
             }
+            contact {
+              h2
+              p
+              img {
+                childImageSharp {
+                  fluid(maxWidth: 1400, quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+              img2 {
+                childImageSharp {
+                  fluid(maxWidth: 1400, quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+            footer {
+              p
+            }
           }
         }
       }
@@ -96,7 +119,8 @@ export default () => {
   const tecnology = data.markdownRemark.frontmatter.content.tecnology
   const client = data.markdownRemark.frontmatter.content.client
   const test = data.markdownRemark.frontmatter.content.testimonials
-
+  const contact = data.markdownRemark.frontmatter.content.contact
+  const footer = data.markdownRemark.frontmatter.content.footer
   return (
     <Layout>
       <Banner data={baner} />
@@ -105,6 +129,8 @@ export default () => {
       <Tecnology data={tecnology} />
       <Client data={client} />
       <Testimonials data={test} />
+      <Contact data={contact} />
+      <Footer data={footer} />
     </Layout>
   )
 }
