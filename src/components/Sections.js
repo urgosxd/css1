@@ -160,7 +160,12 @@ export const Contact = ({ data }) => {
             lg={6}
             style={{ background: `url(${image2})` }}
           >
-            <form className="formulario" method="post" data-netlify="true">
+            <form
+              className="formulario"
+              method="post"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
               <div className="inputBx">
                 <input
                   type="text"
