@@ -162,10 +162,11 @@ export const Contact = ({ data }) => {
           >
             <form
               className="formulario"
+              name="Contact Form"
               method="post"
               data-netlify="true"
-              data-netlify-honeypot="bot-field"
             >
+              <input type="hidden" name="form-name" value="Contact Form" />
               <div className="inputBx">
                 <input
                   type="text"
