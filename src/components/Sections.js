@@ -160,7 +160,7 @@ export const Contact = ({ data }) => {
             lg={6}
             style={{ background: `url(${image2})` }}
           >
-            <form className="formulario" netlify>
+            <form className="formulario" action="POST" netlify>
               <div className="inputBx">
                 <input type="text" placeholder="Full Name" name="name" />
               </div>
