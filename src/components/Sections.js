@@ -160,18 +160,37 @@ export const Contact = ({ data }) => {
             lg={6}
             style={{ background: `url(${image2})` }}
           >
-            <form className="formulario" action="POST" netlify>
+            <form className="formulario" action="POST" data-netlify="true">
               <div className="inputBx">
-                <input type="text" placeholder="Full Name" name="name" />
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  name="name"
+                  id="name"
+                />
               </div>
               <div className="inputBx">
-                <input type="email" placeholder="Email Adress" name="email" />
+                <input
+                  type="email"
+                  placeholder="Email Adress"
+                  name="email"
+                  id="email"
+                />
               </div>
               <div className="inputBx">
-                <input type="text" placeholder="Mobile nro" name="phone" />
+                <input
+                  type="text"
+                  placeholder="Mobile nro"
+                  name="phone"
+                  id="phone"
+                />
               </div>
               <div className="inputBx">
-                <textarea placeholder="Write your Message" name="message" />
+                <textarea
+                  placeholder="Write your Message"
+                  name="message"
+                  id="message"
+                />
               </div>
               <div data-netlify-recaptcha="true"></div>
               <div className="inputBx">
