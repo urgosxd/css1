@@ -163,7 +163,7 @@ export const Contact = ({ data }) => {
             <form
               className="formulario"
               name="Contact Form"
-              method="post"
+              method="POST"
               data-netlify="true"
             >
               <input type="hidden" name="form-name" value="Contact Form" />
@@ -200,7 +200,7 @@ export const Contact = ({ data }) => {
               </div>
               <div data-netlify-recaptcha="true"></div>
               <div className="inputBx">
-                <input type="submit" value="send" />
+                <button type="submit">Send</button>
               </div>
             </form>
           </Col>
