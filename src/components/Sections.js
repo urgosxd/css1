@@ -213,7 +213,7 @@ export const Contact = ({ data }) => {
                   type="email"
                   onChange={handleChange}
                   name="email"
-                  value={formState.name}
+                  value={formState.email}
                   placeholder="Email"
                 />
               </div>
