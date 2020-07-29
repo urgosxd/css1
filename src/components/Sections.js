@@ -162,12 +162,11 @@ export const Contact = ({ data }) => {
           >
             <form
               className="formulario"
-              name="Contact Form"
+              name="form-contact"
+              netlify="true"
               method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
+              netlify-honeypot="not-today"
             >
-              <input type="hidden" name="form-name" value="Contact Form" />
               <div className="inputBx">
                 <input
                   type="text"
@@ -199,10 +198,8 @@ export const Contact = ({ data }) => {
                   id="message"
                 />
               </div>
-              <div data-netlify-recaptcha="true"></div>
-              <div className="inputBx">
-                <button type="submit">Send</button>
-              </div>
+
+              <button type="submit">Send</button>
             </form>
           </Col>
           <Col xs={12} md={12} lg={6}>
