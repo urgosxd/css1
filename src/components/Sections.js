@@ -165,6 +165,7 @@ export const Contact = ({ data }) => {
               name="Contact Form"
               method="POST"
               data-netlify="true"
+              data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="form-name" value="Contact Form" />
               <div className="inputBx">
