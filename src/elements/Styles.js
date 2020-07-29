@@ -270,7 +270,7 @@ export const ContactWrapper = styled.section`
   & .formulario .inputBx textarea::placeholder {
     color: #fff;
   }
-  & .formulario .inputBx input[type="submit"] {
+  & .formulario .inputBx button[type="submit"] {
     width: 150px;
     background: #fff;
     color: #111;

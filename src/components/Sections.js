@@ -204,6 +204,7 @@ export const Contact = ({ data }) => {
                   onChange={handleChange}
                   name="name"
                   value={formState.name}
+                  placeholder="Name"
                 />
               </div>
               <div className="inputBx">
@@ -213,6 +214,7 @@ export const Contact = ({ data }) => {
                   onChange={handleChange}
                   name="email"
                   value={formState.name}
+                  placeholder="Email"
                 />
               </div>
               <div className="inputBx">
@@ -220,7 +222,7 @@ export const Contact = ({ data }) => {
                   id="message"
                   onChange={handleChange}
                   name="message"
-                  value={formState.name}
+                  placeholder="Your message"
                 />
               </div>
               <div className="inputBx">
