@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import Img from "gatsby-image"
 import { Container, Row, Col } from "react-bootstrap"
@@ -143,6 +143,35 @@ export const Contact = ({ data }) => {
   console.log(data)
   const image = data.img.childImageSharp.fluid
   const image2 = data.img2.childImageSharp.fluid.src
+
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+  })
+
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
+  const handleChange = e => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    })
+  }
+  const handleSubmit = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...formState }),
+    })
+      .then(() => alert("Sucesess"))
+      .catch(error => alert(error))
+    e.preventDefault()
+  }
+
   return (
     <ContactWrapper>
       <div className="contact">
@@ -162,42 +191,19 @@ export const Contact = ({ data }) => {
           >
             <form
               className="formulario"
-              name="form-contact"
-              netlify="true"
-              method="POST"
-              netlify-honeypot="not-today"
+              onSubmit={handleSubmit}
+              name="contact"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
             >
-              <input name="not-today" hidden />
-              <input name="form-name" value="form-contact" hidden />
+              <input type="hidden" name="form-name" value="contact" />
               <div className="inputBx">
                 <input
-                  type="text"
-                  placeholder="Full Name"
-                  name="name"
                   id="name"
-                />
-              </div>
-              <div className="inputBx">
-                <input
-                  type="email"
-                  placeholder="Email Adress"
-                  name="email"
-                  id="email"
-                />
-              </div>
-              <div className="inputBx">
-                <input
                   type="text"
-                  placeholder="Mobile nro"
-                  name="phone"
-                  id="phone"
-                />
-              </div>
-              <div className="inputBx">
-                <textarea
-                  placeholder="Write your Message"
-                  name="message"
-                  id="message"
+                  onChange={handleChange}
+                  name="name"
+                  value={formState.name}
                 />
               </div>
 
