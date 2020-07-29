@@ -167,6 +167,8 @@ export const Contact = ({ data }) => {
               method="POST"
               netlify-honeypot="not-today"
             >
+              <input name="not-today" hidden />
+              <input name="form-name" value="form-contact" hidden />
               <div className="inputBx">
                 <input
                   type="text"
