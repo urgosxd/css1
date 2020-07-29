@@ -206,8 +206,26 @@ export const Contact = ({ data }) => {
                   value={formState.name}
                 />
               </div>
-
-              <button type="submit">Send</button>
+              <div className="inputBx">
+                <input
+                  id="email"
+                  type="email"
+                  onChange={handleChange}
+                  name="email"
+                  value={formState.name}
+                />
+              </div>
+              <div className="inputBx">
+                <textarea
+                  id="message"
+                  onChange={handleChange}
+                  name="message"
+                  value={formState.name}
+                />
+              </div>
+              <div className="inputBx">
+                <button type="submit">Send</button>
+              </div>
             </form>
           </Col>
           <Col xs={12} md={12} lg={6}>
