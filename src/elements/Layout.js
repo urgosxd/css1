@@ -13,7 +13,11 @@ export const LayoutWrapper = styled.div`
     font-weight: 300;
     letter-spacing: 1px;
   }
+  .gatsby-image-wrapper picture img {
+    position: relative !important;
+  }
 
+  overflow-x: hidden;
   @media ${props => props.theme.devices.tablet} {
     .heading {
       font-size: 45px;

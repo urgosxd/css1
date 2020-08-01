@@ -1,6 +1,5 @@
 import React from "react"
 import {
-  Layout,
   Banner,
   About,
   Services,
@@ -11,6 +10,9 @@ import {
   Footer,
 } from "../components"
 import { useStaticQuery, graphql } from "gatsby"
+import Loadable from "react-loadable"
+
+const loader = () => <div>Loading about content.....</div>
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -35,8 +37,8 @@ export default () => {
               p
               img {
                 childImageSharp {
-                  fluid(maxWidth: 1400, quality: 100) {
-                    ...GatsbyImageSharpFluid
+                  fixed(width: 670, quality: 100, height: 600) {
+                    ...GatsbyImageSharpFixed
                   }
                 }
               }
@@ -98,7 +100,7 @@ export default () => {
               }
               img2 {
                 childImageSharp {
-                  fluid(maxWidth: 1400, quality: 100) {
+                  fluid(maxWidth: 600, quality: 100, maxHeight: 800) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -121,8 +123,13 @@ export default () => {
   const test = data.markdownRemark.frontmatter.content.testimonials
   const contact = data.markdownRemark.frontmatter.content.contact
   const footer = data.markdownRemark.frontmatter.content.footer
+
+  const MyParallaxComponent = Loadable({
+    loader: () => import("../components/layout"),
+    loading: loader,
+  })
   return (
-    <Layout>
+    <MyParallaxComponent>
       <Banner data={baner} />
       <About data={about} />
       <Services data={services} />
@@ -131,6 +138,6 @@ export default () => {
       <Testimonials data={test} />
       <Contact data={contact} />
       <Footer data={footer} />
-    </Layout>
+    </MyParallaxComponent>
   )
 }

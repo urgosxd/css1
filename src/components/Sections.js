@@ -14,6 +14,7 @@ import {
   FooterWrapper,
 } from "../elements"
 import { Instagram, Twitter, Linkedin } from "@styled-icons/boxicons-logos"
+import { Parallax } from "react-skrollr"
 
 export const Banner = ({ data }) => {
   const image = data.img.childImageSharp.fluid
@@ -21,28 +22,61 @@ export const Banner = ({ data }) => {
   return (
     <BannerWrapper className="position-relative w-100 d-flex justify-content-center align-items-center">
       <Img fluid={image} />
-      <div className="position-relative text-center contenido">
-        <h2>{data.h2}</h2>
-        <P size="small">{data.p}</P>
-      </div>
+      <Parallax
+        data={{
+          "data-0-top": "opacity: 0;left:100px;",
+
+          "data-200-top": "opacity: 1;left:0px;",
+        }}
+      >
+        <div className="text-center contenido">
+          <h2>{data.h2}</h2>
+          <P size="small">{data.p}</P>
+        </div>
+      </Parallax>
     </BannerWrapper>
   )
 }
 
 export const About = ({ data }) => {
-  const image = data.img.childImageSharp.fluid
+  const image = data.img.childImageSharp.fixed
   return (
     <AboutWrapper>
       <Container className="position-relative p-0" fluid={true}>
         <Row noGutters={true}>
           <Col className="contentBx" sm={12} md={12} lg={6}>
-            <h2 className="heading">{data.h2}</h2>
-            <P size="small" className="text">
-              {data.p}
-            </P>
+            <Parallax
+              data={{
+                "data-center-center": "opacity: 1;left:0px;",
+
+                "data-0-bottom": "opacity: 0;left:500px;",
+              }}
+            >
+              <h2 className="heading">{data.h2}</h2>
+            </Parallax>
+            <Parallax
+              data={{
+                "data-center-center": "opacity: 1;left:0px;",
+
+                "data-start-bottom": "opacity: 0;left:-500px;",
+              }}
+            >
+              <P size="small" className="text">
+                {data.p}
+              </P>
+            </Parallax>
           </Col>
-          <Col xs={12} md={12} lg={6}>
-            <Img fluid={image} />
+
+          <Col xs={12} md={12} lg={6} className="colImg">
+            <Parallax
+              data={{
+                "data-center-center": "opacity: 1;margin-left:0px;",
+
+                "data-225-bottom": "opacity: 0;margin-left:200px;",
+              }}
+            >
+              <Img fixed={image} />
+            </Parallax>
           </Col>
         </Row>
       </Container>
@@ -51,22 +85,60 @@ export const About = ({ data }) => {
 }
 
 export const Services = ({ data }) => {
-  console.log(data)
-
   return (
     <ServicesWrapper>
-      <h2 className="heading">{data.h2}</h2>
-      <P size="small" className="text">
-        {data.p}
-      </P>
-      <Container className="contentBx">
+      <Parallax
+        data={{
+          "data-center-center": "opacity: 1;margin-left:0px;",
+
+          "data-225-bottom": "opacity: 0;margin-left:200px;",
+        }}
+      >
+        <h2 className="heading">{data.h2}</h2>
+      </Parallax>
+      <Parallax
+        data={{
+          "data-center-center": "opacity: 1;right:0px;",
+
+          "data-0-bottom": "opacity: 0;right:500px;",
+        }}
+      >
+        <P size="small" className="text">
+          {data.p}
+        </P>
+      </Parallax>
+      <Container className="contentBx ">
         <Row>
-          {data.box.map(e => (
+          {data.box.map((e, idx) => (
             <Col lg={4} md={6} xs={12} className="serviceBx ">
-              <div className="min">
-                <Img fixed={e.img.childImageSharp.fixed} />
-                <h2>{e.h2}</h2>
-              </div>
+              <Parallax
+                data={{
+                  "data-center-center": `opacity: 1;${
+                    idx == 0
+                      ? "left"
+                      : idx == 1
+                      ? "bottom"
+                      : idx == 2
+                      ? "right"
+                      : null
+                  }:0px;`,
+
+                  "data-0-bottom": `opacity: 0;${
+                    idx == 0
+                      ? "left"
+                      : idx == 1
+                      ? "bottom"
+                      : idx == 2
+                      ? "right"
+                      : null
+                  }:-400px;`,
+                }}
+              >
+                <div className="min">
+                  <Img fixed={e.img.childImageSharp.fixed} />
+                  <h2>{e.h2}</h2>
+                </div>
+              </Parallax>
             </Col>
           ))}
         </Row>
@@ -81,15 +153,29 @@ export const Tecnology = ({ data }) => {
       <Container>
         <Row>
           <Col xs={12} md={12} lg={6}>
-            <div>
+            <Parallax
+              data={{
+                "data-center-center": "opacity: 1;left:0px;",
+
+                "data-0-bottom": "opacity: 0;left:-400px;",
+              }}
+            >
               <h2 className="heading ">{data.h2}</h2>
               <P size="small" className="text mt-4">
                 {data.p}
               </P>
-            </div>
+            </Parallax>
           </Col>
           <Col xs={12} md={12} lg={6} className="imgCol">
-            <Img fluid={data.img.childImageSharp.fluid} className="imgBox" />
+            <Parallax
+              data={{
+                "data-center-center": "opacity: 1;right:0px;",
+
+                "data-0-bottom": "opacity: 0;right:-400px;",
+              }}
+            >
+              <Img fluid={data.img.childImageSharp.fluid} className="imgBox" />
+            </Parallax>
           </Col>
         </Row>
       </Container>
@@ -101,15 +187,49 @@ export const Client = ({ data }) => {
   console.log(data)
   return (
     <ClientWrapper>
-      <h2 className="heading">{data.h2}</h2>
-      <P size="small" className="text pb-5">
-        {data.p}
-      </P>
+      <Parallax
+        data={{
+          "data-center-center": "opacity: 1;top:0px;",
+
+          "data-0-bottom": "opacity: 0;top:-100px;",
+        }}
+      >
+        <h2 className="heading pb-3">{data.h2}</h2>
+      </Parallax>
+      <Parallax
+        data={{
+          "data-center-center": "opacity: 1;bottom:0px;",
+
+          "data-0-bottom": "opacity: 0;bottom:-100px;",
+        }}
+      >
+        <P size="small" className="text pb-5">
+          {data.p}
+        </P>
+      </Parallax>
       <Container>
         <Row className="mt-5">
-          {data.box.map(e => (
+          {data.box.map((e, idx) => (
             <Col xs={12} md={6} lg={3}>
-              <Img fixed={e.img.childImageSharp.fixed} className="imgBox" />
+              <Parallax
+                data={{
+                  "data-center-center": "opacity: 1;top:0px;",
+
+                  "data-0-bottom": `opacity: 0;top:${
+                    idx == 0
+                      ? "100"
+                      : idx == 1
+                      ? "150"
+                      : idx == 2
+                      ? "200"
+                      : idx == 3
+                      ? "250"
+                      : null
+                  }px;`,
+                }}
+              >
+                <Img fixed={e.img.childImageSharp.fixed} className="imgBox" />
+              </Parallax>
             </Col>
           ))}
         </Row>
@@ -124,13 +244,25 @@ export const Testimonials = ({ data }) => {
       <h2 className="heading">{data.h2}</h2>
       <Container>
         <Row className="mt-5">
-          {data.box.map(e => (
+          {data.box.map((e, idx) => (
             <Col lg={6}>
-              <div className="contentBx d-flex justify-content-center align-items-center  flex-column text-left">
-                <P size="small">{e.p}</P>
-                <br />
-                <h3 className="w-100">{e.h3}</h3>
-              </div>
+              <Parallax
+                data={{
+                  "data-center-center": `opacity: 1;${
+                    idx == 0 ? "left" : "right"
+                  }:0px;`,
+
+                  "data-0-bottom": `opacity: 0;${
+                    idx == 0 ? "left" : "right"
+                  }:-400px;`,
+                }}
+              >
+                <div className="contentBx d-flex justify-content-center align-items-center  flex-column text-left">
+                  <P size="small">{e.p}</P>
+                  <br />
+                  <h3 className="w-100">{e.h3}</h3>
+                </div>
+              </Parallax>
             </Col>
           ))}
         </Row>
@@ -175,10 +307,19 @@ export const Contact = ({ data }) => {
   return (
     <ContactWrapper>
       <div className="contact">
-        <h2 className="heading">{data.h2}</h2>
-        <P size="small" className="text">
-          {data.p}
-        </P>
+        <Parallax
+          data={{
+            "data-center-center": "opacity: 1;left:0px;",
+
+            "data-0-bottom": "opacity: 0;left:-100px;",
+          }}
+        >
+          <h2 className="heading">{data.h2}</h2>
+
+          <P size="small" className="text">
+            {data.p}
+          </P>
+        </Parallax>
       </div>
       <Container className="h-75 p-0" fluid={true}>
         <Row noGutters={true}>
@@ -189,49 +330,57 @@ export const Contact = ({ data }) => {
             lg={6}
             style={{ background: `url(${image2})` }}
           >
-            <form
-              className="formulario"
-              onSubmit={handleSubmit}
-              name="contact"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
+            <Parallax
+              data={{
+                "data-center-center": "opacity: 1;left:0px;",
+
+                "data-0-bottom": "opacity: 0;left:-100px;",
+              }}
             >
-              <input type="hidden" name="form-name" value="contact" />
-              <div className="inputBx">
-                <input
-                  id="name"
-                  type="text"
-                  onChange={handleChange}
-                  name="name"
-                  value={formState.name}
-                  placeholder="Name"
-                />
-              </div>
-              <div className="inputBx">
-                <input
-                  id="email"
-                  type="email"
-                  onChange={handleChange}
-                  name="email"
-                  value={formState.email}
-                  placeholder="Email"
-                />
-              </div>
-              <div className="inputBx">
-                <textarea
-                  id="message"
-                  onChange={handleChange}
-                  name="message"
-                  placeholder="Your message"
-                />
-              </div>
-              <div className="inputBx">
-                <button type="submit">Send</button>
-              </div>
-            </form>
+              <form
+                className="formulario"
+                onSubmit={handleSubmit}
+                name="contact"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <div className="inputBx">
+                  <input
+                    id="name"
+                    type="text"
+                    onChange={handleChange}
+                    name="name"
+                    value={formState.name}
+                    placeholder="Name"
+                  />
+                </div>
+                <div className="inputBx">
+                  <input
+                    id="email"
+                    type="email"
+                    onChange={handleChange}
+                    name="email"
+                    value={formState.email}
+                    placeholder="Email"
+                  />
+                </div>
+                <div className="inputBx">
+                  <textarea
+                    id="message"
+                    onChange={handleChange}
+                    name="message"
+                    placeholder="Your message"
+                  />
+                </div>
+                <div className="inputBx">
+                  <button type="submit">Send</button>
+                </div>
+              </form>
+            </Parallax>
           </Col>
-          <Col xs={12} md={12} lg={6}>
-            <Img fluid={image} />
+          <Col xs={12} md={12} lg={6} className="colImg">
+            <Img fluid={image} style={{ height: "700px" }} />
           </Col>
         </Row>
       </Container>

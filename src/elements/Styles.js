@@ -44,6 +44,10 @@ export const NavWrapper = styled.nav`
 export const BannerWrapper = styled.section`
   height: 100vh;
   background: #3475ca;
+
+  & .gatsby-image-wrapper div {
+    padding: 0 !important;
+  }
   & .gatsby-image-wrapper {
     position: absolute !important;
     top: 0;
@@ -54,6 +58,7 @@ export const BannerWrapper = styled.section`
     opacity: 0.25;
   }
   & .contenido {
+    position: relative !important;
     max-width: 750px;
   }
   & .contenido h2 {
@@ -72,24 +77,19 @@ export const BannerWrapper = styled.section`
 `
 
 export const AboutWrapper = styled.section`
+  background: #162c3b;
   & .contentBx {
     background: #162c3b;
     padding: 100px;
   }
-  & .gatsby-image-wrapper {
-    background-size: cover;
-    background-position: center;
-    width: 100%;
+  & .colImg {
+    height: 600px;
   }
-
   @media ${props => props.theme.devices.tablet} {
     & .contentBx {
       text-align: center;
       padding: 50px;
       min-height: 400px;
-    }
-    & .gatsby-image-wrapper {
-      height: 500px;
     }
   }
 `
@@ -101,15 +101,18 @@ export const ServicesWrapper = styled.section`
   & .contentBx {
     margin-top: 80px;
   }
+  & .serviceBx {
+    z-index: 10000;
+  }
   & .serviceBx .min {
     background: #fff;
     height: 400px;
     width: 350px;
     display: flex;
     justify-content: center;
-    position: relative;
     align-items: center;
     flex-direction: column;
+    z-index: 1000;
   }
   @media ${props => props.theme.devices.tablet} {
     & .contentBx .row {
@@ -148,6 +151,9 @@ export const TecnologyWrapper = styled.section`
   }
   & .imgCol {
     padding-left: 20%;
+  }
+  & .gatsby-image-wrapper div {
+    padding: 0 !important;
   }
   @media ${props => props.theme.devices.tablet} {
     & .imgBox {
@@ -233,9 +239,15 @@ export const ContactWrapper = styled.section`
     padding: 100px;
   }
 
-  & .gatsby-image-wrapper {
-    background-size: cover;
-    background-position: center;
+  & .colImg {
+    height: 700px;
+  }
+
+  & .gatsby-image-wrapper picture img {
+    position: relative !important;
+  }
+  & .gatsby-image-wrapper div {
+    padding: 0 !important;
   }
   & .formulario .inputBx {
     margin-bottom: 40px;
