@@ -1,12 +1,14 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import React, { useEffect, useState } from "react"
+
 import { LayoutWrapper, NavWrapper, P } from "../elements"
-import { Menu } from "@styled-icons/entypo"
+import { Menu, User } from "@styled-icons/entypo"
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap"
-import { ParallaxProvider, Parallax } from "react-skrollr"
 
 const Layout = ({ data, children, isHome }) => {
+  const ParallaxProvider =
+    typeof window !== `undefined`
+      ? require("react-skrollr").ParallaxProvider
+      : null
   return (
     <LayoutWrapper>
       <ParallaxProvider
