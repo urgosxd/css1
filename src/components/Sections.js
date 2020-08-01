@@ -14,11 +14,11 @@ import {
   FooterWrapper,
 } from "../elements"
 import { Instagram, Twitter, Linkedin } from "@styled-icons/boxicons-logos"
-import { Parallax } from "react-skrollr"
 
 export const Banner = ({ data }) => {
   const image = data.img.childImageSharp.fluid
-
+  const Parallax =
+    typeof window !== `undefined` ? require("react-skrollr").Parallax : null
   return (
     <BannerWrapper className="position-relative w-100 d-flex justify-content-center align-items-center">
       <Img fluid={image} />
